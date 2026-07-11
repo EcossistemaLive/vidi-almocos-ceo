@@ -101,62 +101,58 @@
       position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000;
       display: none; align-items: center; justify-content: center; backdrop-filter: blur(5px);
     }
-    .modal-overlay.active { display: flex; }
+    .modal-overlay.active { display: flex; animation: fadeIn 0.3s; }
     .modal-content {
-      background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 650px;
-      min-height: 400px; border-radius: 8px; padding: 2rem; position: relative;
-      display: flex; flex-direction: column; max-height: 90vh; overflow-y: auto;
+      background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 500px;
+      border-radius: 8px; padding: 2rem; position: relative;
     }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    
     .close-btn {
       position: absolute; top: 1rem; right: 1.5rem; background: transparent; border: none;
       color: var(--muted); font-size: 2rem; cursor: pointer; transition: color 0.3s;
     }
     .close-btn:hover { color: var(--white); }
 
-    /* Formulário Estilos (baseados na página original) */
-    .step-container { display: none; flex-direction: column; gap: 1.5rem; animation: fadeIn 0.4s ease; }
-    .step-container.active { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    /* Estilos do Formulário Baseado no Template Fornecido */
+    .form-header { text-align: center; margin-bottom: 2rem; }
+    .form-header h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
     
-    .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 2rem; overflow: hidden; }
-    .progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.3s; }
-    
-    .question-block { font-size: 1.4rem; font-weight: 500; color: var(--white); }
-    
-    .options-grid { display: flex; flex-direction: column; gap: 0.75rem; }
-    .option-btn {
-      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
-      padding: 1rem; font-size: 1rem; color: var(--white); text-align: left; cursor: pointer;
-      display: flex; align-items: center; gap: 1rem; transition: all 0.2s; font-family: var(--font-b);
+    .detalhes-box {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: left;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      border-radius: 4px;
     }
-    .option-btn:hover { background: rgba(255,255,255,0.07); border-color: rgba(197,160,89,0.3); }
-    .option-btn.selected { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); }
-    .option-letter {
-      background: rgba(255,255,255,0.1); width: 24px; height: 24px; border-radius: 4px;
-      display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;
-    }
-    .option-btn.selected .option-letter { background: var(--gold); color: #000; }
+    .detalhes-box strong { color: var(--gold); }
 
-    .input-wrap { display: flex; flex-direction: column; gap: 1rem; }
-    .input-wrap input {
-      background: transparent; border: none; border-bottom: 2px solid rgba(255,255,255,0.2);
-      color: var(--gold-light); font-size: 1.2rem; padding: 0.5rem 0; outline: none; transition: 0.3s;
-      font-family: var(--font-b);
+    form { display: flex; flex-direction: column; gap: 1.25rem; text-align: left; }
+    form label {
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); font-weight: 600;
     }
-    .input-wrap input:focus { border-color: var(--gold); }
-    
-    .nav-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; align-items: center; flex-wrap: wrap; }
-    .btn-next, .btn-submit {
-      background: var(--gold); color: #000; border: none; padding: 0.8rem 1.5rem; border-radius: 4px;
-      font-weight: 600; cursor: pointer; transition: opacity 0.2s; font-family: var(--font-b);
+    form input {
+      background-color: rgba(0,0,0,0.3); border: 1px solid var(--border);
+      padding: 0.85rem; color: var(--white); font-size: 1rem; border-radius: 4px;
+      font-family: var(--font-b); transition: border-color 0.3s;
     }
-    .btn-next:disabled, .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-prev {
-      background: transparent; border: none; color: var(--muted); cursor: pointer;
-      font-family: var(--font-b); text-decoration: underline;
+    form input:focus { outline: none; border-color: var(--gold); }
+
+    .btn-submit {
+      background-color: var(--gold); color: #000; border: none; padding: 1rem;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;
+      cursor: pointer; transition: all 0.3s; margin-top: 0.5rem; border-radius: 4px;
     }
-    .thank-you { text-align: center; padding: 2rem 0; }
-    .thank-you h2 { color: var(--gold); margin-bottom: 1rem; font-family: var(--font-d); font-size: 2rem; }
+    .btn-submit:hover { opacity: 0.9; }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* Área de Sucesso */
+    .success-box { display: none; text-align: center; }
+    .success-box h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .success-box p { font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem; }
   </style>
 </head>
 <body>
@@ -192,7 +188,7 @@
     <div class="next-edition">
       <div class="badge">Próxima Edição</div>
       <h2>Inscrição para a Próxima Edição</h2>
-      <p>Data e local à definir. Garanta sua vaga antecipadamente preenchendo nosso diagnóstico estratégico. Nossa equipe entrará em contato assim que a agenda for aberta.</p>
+      <p>Garanta sua vaga antecipadamente preenchendo o formulário de reserva. Nossa equipe entrará em contato assim que a data e o local da próxima edição forem definidos.</p>
       <button class="btn-primary" onclick="openModal()">Aplicar para a Próxima Edição</button>
     </div>
   </section>
@@ -224,202 +220,106 @@
   <div class="modal-overlay" id="formModal">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal()">&times;</button>
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-      <div id="formApp"></div>
+      
+      <div id="registration-block">
+        <div class="form-header">
+          <h2>Lista de Espera</h2>
+          <p style="font-size: 0.95rem; margin-bottom: 0;">Almoço com CEO</p>
+        </div>
+        
+        <div class="detalhes-box">
+          <strong>Data:</strong> À definir<br>
+          <strong>Horário:</strong> À definir<br>
+          <strong>Local:</strong> À definir
+        </div>
+
+        <form id="rsvp-form">
+          <div>
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required style="width: 100%; margin-top: 0.5rem;">
+          </div>
+          <div>
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(62) 99999-9999" required style="width: 100%; margin-top: 0.5rem;">
+          </div>
+          <button type="submit" class="btn-submit" id="submit-btn">Confirmar Interesse</button>
+        </form>
+      </div>
+
+      <div id="success-block" class="success-box">
+        <h2>Pré-inscrição Confirmada!</h2>
+        <p>Obrigado, <span id="guest-name" style="color: #fff; font-weight: bold;"></span>. Seu interesse foi registrado com sucesso na lista VIP da VIDI.</p>
+        <div class="detalhes-box" style="text-align: center;">
+          <strong>Aguarde nosso contato!</strong><br>
+          Informaremos os detalhes assim que a agenda for fechada.
+        </div>
+        <button class="btn-submit" onclick="closeModal()" style="width: 100%;">Fechar</button>
+      </div>
+
     </div>
   </div>
 
   <script>
-    const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzsZ9A6I6J7gzTM3YgymdhCm3Irp9tLmsA9BYXCzT27vGH6zVbv_Ug53-qfKcwcxdkh/exec";
-    const questions = [
-      {
-        id: "contato", type: "contact", title: "Para começar, onde podemos enviar o resultado do seu diagnóstico?",
-        inputs: [
-          { name: "nome", type: "text", placeholder: "Seu nome completo" },
-          { name: "email", type: "email", placeholder: "Seu melhor e-mail" },
-          { name: "whatsapp", type: "tel", placeholder: "Seu WhatsApp" }
-        ]
-      },
-      {
-        id: "papel", type: "choice", title: "Qual é o seu papel hoje na empresa?",
-        options: ["CEO / Diretor", "Gerente", "Outro"]
-      },
-      {
-        id: "objetivo", type: "choice", title: "Você está buscando algo para você, para o seu time ou para a empresa como um todo?",
-        options: ["Para mim, como líder", "Para o meu time de liderança", "Para a empresa como um todo"]
-      },
-      {
-        id: "faturamento", type: "choice", title: "Qual o faturamento mensal aproximado da sua empresa?",
-        options: ["100 a 500 mil", "500 mil a 1 milhão", "1 a 2,5 milhões", "2,5 a 5 milhões", "Acima de 5 milhões"]
-      },
-      {
-        id: "colaboradores", type: "choice", title: "Quantos colaboradores a empresa tem no total?",
-        options: ["Até 10", "De 11 a 50", "De 51 a 200", "Mais de 200"]
-      },
-      {
-        id: "momento_atual", type: "choice", title: "Qual dessas frases descreve melhor o seu momento atual na empresa?",
-        options: [
-          "Sei que preciso sair da operação, mas não sei por onde começar",
-          "Preciso que meus líderes cresçam para a empresa escalar",
-          "Preciso colocar ordem na casa: processos, metas e times",
-          "Quero revisitar a estratégia para um próximo ciclo (expansão, exit, etc.)"
-        ]
-      },
-      {
-        id: "disponibilidade_presencial", type: "choice", title: "A próxima edição acontecerá presencialmente, com local e data à definir. Você tem preferência por alguma região ou disponibilidade para viajar?",
-        options: [
-          "Moro em São Paulo ou viajo facilmente para lá",
-          "Moro em Brasília ou viajo facilmente para lá",
-          "Aguardarei a definição da data/local para confirmar presença",
-          "Prefiro eventos ou mentorias 100% online"
-        ]
-      }
-    ];
-
-    let currentStep = 0;
-    const answers = {};
-    const app = document.getElementById('formApp');
-
     function openModal() {
       document.getElementById('formModal').classList.add('active');
-      if (app.innerHTML === '') renderSteps();
+      document.getElementById('registration-block').style.display = 'block';
+      document.getElementById('success-block').style.display = 'none';
+      document.getElementById('rsvp-form').reset();
+      const btnSubmit = document.getElementById('submit-btn');
+      btnSubmit.innerText = "Confirmar Interesse";
+      btnSubmit.disabled = false;
     }
     
     function closeModal() {
       document.getElementById('formModal').classList.remove('active');
     }
 
-    function renderSteps() {
-      app.innerHTML = '';
-      answers['submission_id'] = 'sub_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-      
-      questions.forEach((q, index) => {
-        const stepDiv = document.createElement('div');
-        stepDiv.className = `step-container ${index === 0 ? 'active' : ''}`;
-        stepDiv.id = `step-${index}`;
+    // Máscara dinâmica para o telefone (padrão brasileiro)
+    const telInput = document.getElementById('telefone');
+    telInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
 
-        let contentHTML = `<div class="question-block">${q.title}</div>`;
+    // Evento de Envio do Formulário
+    document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btnSubmit = document.getElementById('submit-btn');
+        const nomeValue = document.getElementById('nome').value;
+        const telefoneValue = document.getElementById('telefone').value;
 
-        if (q.type === 'choice') {
-          contentHTML += `<div class="options-grid" style="margin-top: 1.5rem;">`;
-          q.options.forEach((opt, i) => {
-            const letter = String.fromCharCode(65 + i);
-            contentHTML += `<button class="option-btn" onclick="selectOption(${index}, '${opt}', event)">
-                              <div class="option-letter">${letter}</div>
-                              <div>${opt}</div>
-                            </button>`;
-          });
-          contentHTML += `</div>`;
-        } else if (q.type === 'contact') {
-          contentHTML += `<div class="input-wrap" style="margin-top: 1.5rem;">`;
-          q.inputs.forEach(inp => {
-            contentHTML += `<input type="${inp.type}" id="input-${index}-${inp.name}" placeholder="${inp.placeholder}" oninput="checkInput(${index})">`;
-          });
-          contentHTML += `</div>`;
-        }
+        btnSubmit.innerText = "Processando...";
+        btnSubmit.disabled = true;
 
-        contentHTML += `<div class="nav-buttons">`;
-        if (index === questions.length - 1) {
-          contentHTML += `<button class="btn-submit" id="next-${index}" disabled onclick="submitForm()">Finalizar Aplicação ✓</button>`;
-        } else {
-          contentHTML += `<button class="btn-next" id="next-${index}" disabled onclick="nextStep()">Avançar ✓</button>`;
-        }
-        if (index > 0) {
-          contentHTML += `<button class="btn-prev" onclick="prevStep()">Voltar</button>`;
-        }
-        contentHTML += `</div>`;
+        // URL do Web App gerada no passo do Google Sheets fornecida pelo usuário
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzKAgk0Q0pMUIgIdN3G0W7tlxRLxjSdMnN-MN7D9onTkMQbMcmXsXiPMjpsoKPGxj0DNg/exec";
 
-        stepDiv.innerHTML = contentHTML;
-        app.appendChild(stepDiv);
-      });
-
-      const tyDiv = document.createElement('div');
-      tyDiv.className = `step-container`;
-      tyDiv.id = `step-thankyou`;
-      tyDiv.innerHTML = `
-        <div class="thank-you">
-          <h2>Inscrição Concluída!</h2>
-          <p>Recebemos seus dados com sucesso. Entraremos em contato assim que os detalhes da próxima edição forem definidos.</p>
-          <button class="btn-next" onclick="closeModal()">Fechar</button>
-        </div>
-      `;
-      app.appendChild(tyDiv);
-      updateProgress();
-    }
-
-    function selectOption(stepIndex, value, event) {
-      const stepDiv = document.getElementById(`step-${stepIndex}`);
-      const buttons = stepDiv.querySelectorAll('.option-btn');
-      buttons.forEach(b => b.classList.remove('selected'));
-      event.currentTarget.classList.add('selected');
-      
-      answers[questions[stepIndex].id] = value;
-      document.getElementById(`next-${stepIndex}`).disabled = false;
-      setTimeout(() => nextStep(), 400);
-    }
-
-    function checkInput(stepIndex) {
-      const q = questions[stepIndex];
-      let valid = true;
-      if (q.type === 'contact') {
-        q.inputs.forEach(inp => {
-          const val = document.getElementById(`input-${stepIndex}-${inp.name}`).value;
-          if (!val.trim()) valid = false;
-          else answers[inp.name] = val; 
+        fetch(WEB_APP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nome: nomeValue,
+                telefone: telefoneValue,
+                sheet: "Proxima Edicao (TBD)"
+            })
+        })
+        .then(() => {
+            exibirSucesso(nomeValue);
+        })
+        .catch(error => {
+            console.error("Erro ao enviar:", error);
+            exibirSucesso(nomeValue);
         });
-      }
-      document.getElementById(`next-${stepIndex}`).disabled = !valid;
-    }
+    });
 
-    function nextStep() {
-      if (currentStep >= questions.length - 1) return;
-      document.getElementById(`step-${currentStep}`).classList.remove('active');
-      currentStep++;
-      document.getElementById(`step-${currentStep}`).classList.add('active');
-      updateProgress();
-    }
-
-    function prevStep() {
-      if (currentStep <= 0) return;
-      document.getElementById(`step-${currentStep}`).classList.remove('active');
-      currentStep--;
-      document.getElementById(`step-${currentStep}`).classList.add('active');
-      updateProgress();
-    }
-
-    function updateProgress() {
-      let pct = Math.round((currentStep / (questions.length - 1)) * 100);
-      if (pct > 100) pct = 100;
-      if (currentStep >= questions.length) pct = 100;
-      document.getElementById('progressFill').style.width = pct + '%';
-    }
-
-    let isSubmitting = false;
-    async function submitForm() {
-      if (isSubmitting) return;
-      isSubmitting = true;
-      
-      document.getElementById(`next-${currentStep}`).innerText = "Enviando...";
-      document.getElementById(`next-${currentStep}`).disabled = true;
-      
-      answers['data_envio'] = new Date().toISOString();
-      answers['parcial'] = false;
-      answers['utm_source'] = "vidi_almocos_ceo";
-
-      try {
-        fetch(WEBHOOK_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(answers)
-        });
-      } catch (error) {
-        console.error("Erro ao enviar para o Google Sheets:", error);
-      }
-
-      document.getElementById(`step-${currentStep}`).classList.remove('active');
-      document.getElementById('step-thankyou').classList.add('active');
-      document.getElementById('progressFill').style.width = '100%';
+    function exibirSucesso(nome) {
+        document.getElementById('registration-block').style.display = 'none';
+        document.getElementById('success-block').style.display = 'block';
+        document.getElementById('guest-name').innerText = nome;
     }
   </script>
 </body>
