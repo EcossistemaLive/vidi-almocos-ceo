@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almoços Exclusivos | Cúpula CEO ViDi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C5A059;
+      --gold-light: #E2C882;
+      --gold-dim: rgba(197, 160, 89, 0.15);
+      --bg: #05070A;
+      --bg-card: #0D1117;
+      --white: rgba(255, 255, 255, 0.9);
+      --muted: rgba(139, 149, 161, 0.85);
+      --border: rgba(255, 255, 255, 0.1);
+      --font-d: 'Playfair Display', serif;
+      --font-b: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-b);
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Grid Texture */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(197, 160, 89, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(197, 160, 89, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* Typography */
+    h1, h2, h3 { font-family: var(--font-d); color: var(--gold); }
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 2rem; text-align: center; }
+    p { font-size: 1.125rem; color: var(--muted); margin-bottom: 1.5rem; }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    
+    /* Header */
+    header { padding: 2rem 0; display: flex; justify-content: center; }
+    .logo { height: 40px; }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 0;
+      position: relative;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 1px; height: 100px; background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    
+    .gold-text { color: var(--gold); }
+
+    /* Como Funciona & Objetivo */
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 4rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .section-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      border-radius: 4px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+    }
+
+    .card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+
+    /* Edições Anteriores */
+    .editions { padding: 6rem 0; }
+    
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .photo-placeholder {
+      aspect-ratio: 4/3;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-placeholder:hover {
+      background: var(--gold-dim);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+    
+    footer p { font-size: 0.9rem; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <img src="vidi_logo.png" alt="ViDi Logo" class="logo">
+    </div>
+  </header>
+
+  <section class="hero container">
+    <h1>Almoços Exclusivos <br><span style="color: var(--white);">Cúpula CEO ViDi</span></h1>
+    <p style="max-width: 700px; margin: 0 auto;">
+      Um espaço reservado para alta liderança discutir estratégias, compartilhar experiências e construir relacionamentos de altíssimo nível.
+    </p>
+  </section>
+
+  <section class="container section-grid">
+    <div class="card">
+      <h3>Como Funciona</h3>
+      <p>Nossos almoços reúnem um grupo selecionado de CEOs, fundadores e diretores para um momento de imersão estratégica em um ambiente intimista e de alta gastronomia.</p>
+      <p>A dinâmica é conduzida de forma a garantir que cada participante possa compartilhar seus desafios atuais e extrair insights valiosos das experiências de seus pares.</p>
+    </div>
+    
+    <div class="card">
+      <h3>Objetivo para os Convidados</h3>
+      <p>O foco central é a <strong>Clareza Estratégica</strong> e a <strong>Expansão de Repertório</strong>. Através do contato direto com outros líderes que enfrentam desafios semelhantes de escala, sucessão e mercado.</p>
+      <p>Além disso, é uma oportunidade ímpar de networking qualificado, sem fricções, desenhado para gerar oportunidades reais de negócio e parcerias duradouras.</p>
+    </div>
+  </section>
+
+  <section class="editions container">
+    <h2>Edições Anteriores</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto;">
+      Confira alguns registros dos encontros que já realizamos com a Cúpula CEO.
+    </p>
+    
+    <div class="photo-grid">
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 1 (Ex: photo1.jpg)</span>
+      </div>
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 2 (Ex: photo2.jpg)</span>
+      </div>
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 3 (Ex: photo3.jpg)</span>
+      </div>
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 4 (Ex: photo4.jpg)</span>
+      </div>
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 5 (Ex: photo5.jpg)</span>
+      </div>
+      <div class="photo-placeholder">
+        <span>Espaço para Foto 6 (Ex: photo6.jpg)</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <img src="vidi_logo.png" alt="ViDi Logo" style="height: 24px; margin-bottom: 1rem; opacity: 0.5;">
+      <p>&copy; 2026 ViDi — Cúpula CEO. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
