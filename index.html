@@ -193,7 +193,7 @@
     <div class="next-edition">
       <div class="badge">Próxima Edição</div>
       <h2>Inscrição para a Próxima Edição</h2>
-      <p>Garanta sua vaga antecipadamente preenchendo o formulário de reserva. Nossa equipe entrará em contato assim que a data e o local da próxima edição forem definidos.</p>
+      <p>Garanta sua vaga antecipadamente preenchendo o formulário de reserva para a nossa próxima edição em Brasília.</p>
       <button class="btn-primary" onclick="openModal()">Aplicar para a Próxima Edição</button>
     </div>
   </section>
@@ -240,9 +240,10 @@
         </div>
         
         <div class="detalhes-box">
-          <strong>Data:</strong> À definir<br>
-          <strong>Horário:</strong> À definir<br>
-          <strong>Local:</strong> À definir
+          <strong>Data:</strong> 20/07<br>
+          <strong>Horário:</strong> 12:30<br>
+          <strong>Local:</strong> Uruaque<br>
+          <strong>Endereço:</strong> SHCS CLS 211 Bloco A Loja 31 - Asa Sul, Brasília - DF, 70274-500
         </div>
 
         <form id="rsvp-form">
@@ -262,8 +263,9 @@
         <h2>Pré-inscrição Confirmada!</h2>
         <p>Obrigado, <span id="guest-name" style="color: #fff; font-weight: bold;"></span>. Seu interesse foi registrado com sucesso na lista VIP da VIDI.</p>
         <div class="detalhes-box" style="text-align: center;">
-          <strong>Aguarde nosso contato!</strong><br>
-          Informaremos os detalhes assim que a agenda for fechada.
+          <strong>Nos vemos lá!</strong><br>
+          20 de Julho às 12:30<br>
+          Uruaque, Brasília - DF
         </div>
         <button class="btn-submit" onclick="closeModal()" style="width: 100%;">Fechar</button>
       </div>
@@ -316,7 +318,7 @@
             body: JSON.stringify({
                 nome: nomeValue,
                 telefone: telefoneValue,
-                sheet: "Proxima Edicao (TBD)"
+                sheet: "20/07"
             })
         })
         .then(() => {
